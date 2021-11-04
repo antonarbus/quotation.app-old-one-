@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quotation.app</title>
+
+  <style>
+    * { box-sizing: border-box; }
+    fieldset { display: inline-block;}
+    legend { font-weight: 600; }
+    label, input { display: block; }
+    input {display: inline-block;}
+  </style>
+
+</body>
+</head>
+<body>
+  <h1>FB login</h1>
+
+
+
+
+
+
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '3089380401386499',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v11.0'
+    });
+      
+    FB.AppEvents.logPageView();   
+      
+  };
+
+  (function(d, s, id){
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+</script>
+
+<button id="myFbButton">my FB btn</button>
+<br>
+<script>
+  const myFbButton = document.querySelector('#myFbButton')
+  myFbButton.addEventListener('click', (e) => {
+    console.log(666)    
+    FB.login(function(response) {
+      if (response.authResponse) {
+      console.log('Welcome!  Fetching your information.... ');
+      FB.api('/me', { fields: 'email,id' }, function(response) {
+        console.log(response);
+      });
+      } else {
+        console.log('User cancelled login or did not fully authorize.');
+      }
+    })
+  })
+
+
+
+</script>
+
+
+
+</body>
+</html>

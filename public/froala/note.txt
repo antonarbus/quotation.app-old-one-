@@ -1,0 +1,5 @@
+was installed via npm: 
+
+npm install froala-editor@3.2.0
+
+this version does not jump on enter and there is no problem with toolbar width
